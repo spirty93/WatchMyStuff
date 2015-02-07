@@ -1,0 +1,41 @@
+<Alloy>
+	<TabGroup >
+        <Tab title="Request">
+            <Window title="Request" backgroundColor="grey">
+            	<Label top="30" height="20" left="0">Time Stamp</Label>
+            	<TextField top="50" width="Titanium.UI.FILL"></TextField>
+            	<Label top="80" height="20" left="0">Describe your location</Label>
+            	<TextArea top="100"
+            		 height="60"
+            		 width="Titanium.UI.FILL"
+            		 borderRadius="3" 
+            		 borderColor="black"></TextArea>
+            </Window>
+        </Tab>
+        <Tab title="Watch">
+            <Window title="Watch Stuff">
+            	<TableView id="table">
+		            <TableViewSection id="section" headerTitle="Awaiting Watches">
+		                <TableViewRow title="Observe my glorious cat"/>
+		                <TableViewRow title="Stare into space"/>
+		            </TableViewSection>
+		        </TableView>
+
+            </Window>
+        </Tab>
+        <Tab title="History">
+            <Window title="Watch History" backgroundColor="white">
+            	<TableView id="table">
+		            <TableViewSection id="section" headerTitle="Current">
+		                <TableViewRow title="The watch"/>
+		                <TableViewRow title="Some other watch"/>
+		            </TableViewSection>
+		            <TableViewSection id="section" headerTitle="Completed Watches">
+		                <TableViewRow title="Watch little anoying dog"/>
+		                <TableViewRow title="Watch "/>
+		            </TableViewSection>
+		        </TableView>
+			</Window>
+        </Tab>
+     </TabGroup>
+</Alloy>
