@@ -1,15 +1,25 @@
 <Alloy>
 	<TabGroup >
         <Tab title="Request">
-            <Window title="Request" backgroundColor="grey">
-            	<Label top="30" height="20" left="0">Time Stamp</Label>
-            	<TextField top="50" width="Titanium.UI.FILL"></TextField>
-            	<Label top="80" height="20" left="0">Describe your location</Label>
-            	<TextArea top="100"
+            <Window title="Request the watch" backgroundColor="grey" layout="vertical">
+            	<Label left="0">Time Stamp</Label>
+            	<TextField
+        		 	width="Titanium.UI.FILL"
+        		 	backgroundColor="white"
+        		 	borderRadius="5"
+        		 	color="black">
+    		 	</TextField>
+            	<Label left="0">Describe your location</Label>
+            	<TextArea
             		 height="60"
             		 width="Titanium.UI.FILL"
-            		 borderRadius="3" 
-            		 borderColor="black"></TextArea>
+            		 borderRadius="5" 
+            		 borderColor="black"
+            		 backgroundColor="white"
+            		 color="black">
+        		 </TextArea>
+        		 <Button title="Upload Image"></Button>
+        		 <Button title="Get My Stuff Watched" bottom="20" onClick="doClick"></Button>
             </Window>
         </Tab>
         <Tab title="Watch">

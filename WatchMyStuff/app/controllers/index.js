@@ -1,6 +1,6 @@
 $.index.open();
 
 function doClick (e) {
-  Titanium.API.info("Hi");
-  alert('hi');
+  var win = require("monitorWatch");
+  win.open();
 };
