@@ -18,5 +18,8 @@ $.index.addEventListener('open', function(){
 	if (!Ti.App.LogInName){
 		var view = Alloy.createController("Login", {}).getView();
 		view.open();
+		getJSON.open("GET", "http://ip.jsontest.com/");
+		getJSON.send();
+		alert(Titanium.API.LastJsonQuery);
 	}
 });

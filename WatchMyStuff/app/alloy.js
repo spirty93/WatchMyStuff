@@ -9,3 +9,11 @@
 // object. For example:
 //
 // Alloy.Globals.someGlobalFunction = function(){};
+
+Titanium.API.LastJsonQuery = 0;
+
+var getJSON = Ti.Network.createHTTPClient({
+    onload: function() {
+    	Titanium.API.LastJsonQuery = JSON.parse(this.responseText);
+	}
+});
