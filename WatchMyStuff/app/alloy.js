@@ -17,3 +17,42 @@ var getJSON = Ti.Network.createHTTPClient({
     	Titanium.API.LastJsonQuery = JSON.parse(this.responseText);
 	}
 });
+
+var transitionBasedOnStatus = Ti.Network.createHTTPClient({
+    onload: function() {
+    	var data = JSON.parse(this.responseText);
+    	if (data.status == "Unfulfilled Watch"){
+    		var view = Alloy.createController("UnfulfilledWatch", data).getView();
+			view.open();
+    	}
+    	else if (data.status == "Accepted Watch"){
+    		var view = Alloy.createController("AcceptedWatch", data).getView();
+			view.open();
+    	}
+    	else if (data.status == "Watcher Arrived"){
+    		var view = Alloy.createController("WatcherArrived", data).getView();
+			view.open();
+    	}
+    	else if (data.status == "In-progress Watch"){
+    		var view = Alloy.createController("InProgressWatch", data).getView();
+			view.open();
+    	}  
+    	else if (data.status == "Finished Watch"){
+    		var view = Alloy.createController("WatchComplete", data).getView();
+			view.open();
+    	}
+	}
+});
+
+var logIn = Ti.Network.createHTTPClient({
+	onload: function () {
+    	var data = JSON.parse(this.responseText);
+    	var view = Alloy.createController("index", {});
+    	Ti.API.user = 3;
+    	view.open();
+   },
+    onerror: function () {
+      	var view = Alloy.createController("index", {});
+		view.open();
+	},	
+});

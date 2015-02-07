@@ -25,12 +25,9 @@
         <Tab title="Watch">
             <Window title="Watch Stuff">
             	<TableView id="table">
-		            <TableViewSection id="section" headerTitle="Awaiting Watches">
-		                <TableViewRow title="Observe my glorious cat"/>
-		                <TableViewRow title="Stare into space"/>
+		            <TableViewSection id="WatchList" headerTitle="Awaiting Watches" >
 		            </TableViewSection>
 		        </TableView>
-
             </Window>
         </Tab>
         <Tab title="History">
