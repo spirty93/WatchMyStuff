@@ -1,6 +1,11 @@
 $.index.open();
 
 function doClick (e) {
-  var win = require("monitorWatch");
-  win.open();
+	 var view = Alloy.createController("monitorWatch", {}).getView();
+	 Titanium.API.info(view);
+   	 view.open();
 };
+
+function outputState(){
+  	
+}
