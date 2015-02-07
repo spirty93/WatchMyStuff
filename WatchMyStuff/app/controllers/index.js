@@ -5,7 +5,3 @@ function doClick (e) {
 	 Titanium.API.info(view);
    	 view.open();
 };
-
-function outputState(){
-  	
-}
