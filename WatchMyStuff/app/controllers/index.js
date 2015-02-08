@@ -11,6 +11,7 @@ var getActiveWatches = Ti.Network.createHTTPClient({
 			var a = Titanium.UI.createTableViewRow();
 			a.title = data[i].id + ": " + data[i].user_name + " is looking for a watcher at: " + data[i].location_description +
 				 "; Requested time of watch in minutes is " + data[i].requested_minutes ;
+			a.borderRadius = "5"; 
 			 console.log(data[i].id + " !");
 			aggregate.push(a);
 		}
@@ -35,8 +36,10 @@ var getYourWatches = Ti.Network.createHTTPClient({
 			
 			var a = Titanium.UI.createTableViewRow();
 			a.title = data[i].id + ": " + data[i].user_name + " is looking for a watcher at: " + data[i].location_description +
-				 "; Requested time of watch in minutes is " + data[i].requested_minutes ;
-			 console.log(data[i].id + " !");
+				 "; Requested watching time is: " + data[i].requested_minutes ;
+			console.log(data[i].id + " !");
+			a.borderRadius = "5";
+			a.borderColor = "Black";
 			aggregate.push(a);
 		}
 		
