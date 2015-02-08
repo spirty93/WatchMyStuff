@@ -83,8 +83,8 @@ function RefreshClick(){
 	console.log("Refresh");
 	getActiveWatches.open("GET", Titanium.API.URL + "/watches/unfulfilled");
 	getActiveWatches.send();
-	getYourWatches.open("GET", Titanium.API.URL + "/users/"+ Titanium.API.user_id + "/watches");
-	getActiveWatches.send();
+	getYourWatches.open("GET", Titanium.API.URL + "/users/"+ Titanium.API.userId + "/watches");
+	getYourWatches.send();
 	};
 
 function doClick (e) {
