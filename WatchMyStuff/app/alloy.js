@@ -20,6 +20,13 @@ var getJSON = Ti.Network.createHTTPClient({
 	}
 });
 
+var getJSONforRequested = Ti.Network.createHTTPClient({
+    onload: function() {
+    	var j = JSON.parse(this.responseText);
+    	applyFunc(j.id);
+	}
+});
+
 function applyFunc(id) {
 	console.log(id);
 	transitionBasedOnStatus.open("GET", Titanium.API.URL + "/watches/" + id + ".json");
@@ -36,10 +43,6 @@ var transitionBasedOnStatus = Ti.Network.createHTTPClient({
     	}
     	else if (data.status == "Accepted Watch"){
     		var view = Alloy.createController("AcceptedWatch", data).getView();
-			view.open();
-    	}
-    	else if (data.status == "Watcher Arrived"){
-    		var view = Alloy.createController("WatcherArrived", data).getView();
 			view.open();
     	}
     	else if (data.status == "In-progress Watch"){

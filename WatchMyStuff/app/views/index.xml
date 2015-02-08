@@ -2,12 +2,13 @@
 	<TabGroup >
         <Tab title="Request">
             <Window title="Request the watch" backgroundColor="grey" layout="vertical">
-            	<Label left="0">For how long?</Label>
+            	<Label left="0">For how long? (In Minutes)</Label>
             	<TextField
             		id="requested_minutes"
         		 	width="Titanium.UI.FILL"
         		 	backgroundColor="white"
         		 	borderRadius="5"
+        		 	keyboardType= Titanium.UI.KEYBOARD_DECIMAL_PAD
         		 	color="black">
     		 	</TextField>
             	<Label left="0">Describe your location</Label>
@@ -22,6 +23,8 @@
         		 </TextArea>
         		 <Button title="Upload Image"></Button>
         		 <Button title="Get My Stuff Watched" bottom="20" onClick="doClick"></Button>
+        		 <Label text="Your Rating" />
+				 <Label id="your_rating" width="Titanium.UI.SIZE" height="20" color="black" backgroundColor="white" />
             </Window>
         </Tab>
         <Tab title="Watch">
@@ -30,20 +33,16 @@
 		            <TableViewSection id="WatchList" headerTitle="Awaiting Watches" >
 		            </TableViewSection>
 		        </TableView>
+	            <Button onClick="RefreshClick" title="Refresh" />
             </Window>
         </Tab>
         <Tab title="History">
             <Window title="Watch History" backgroundColor="white">
-            	<TableView id="tableHist">
-		            <TableViewSection id="section" headerTitle="Current">
-		                <TableViewRow title="The watch"/>
-		                <TableViewRow title="Some other watch"/>
-		            </TableViewSection>
-		            <TableViewSection id="section" headerTitle="Completed Watches">
-		                <TableViewRow title="Watch little anoying dog"/>
-		                <TableViewRow title="Watch "/>
+            	<TableView id="yourtable">
+		            <TableViewSection id="yourWatchList" headerTitle="Awaiting Watches" >
 		            </TableViewSection>
 		        </TableView>
+		        <Button onClick="RefreshClick" title="Refresh" />
 			</Window>
         </Tab>
      </TabGroup>
