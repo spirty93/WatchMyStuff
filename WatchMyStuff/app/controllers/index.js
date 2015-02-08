@@ -1,29 +1,28 @@
+$.index.open();
+
 var getActiveWatches = Ti.Network.createHTTPClient({
     onload: function() {
+    	console.log(this.responseText);
     	var data = JSON.parse(this.responseText);
-    	data = [{"id":1,
-    		"user_id":1,
-    		"watcher_id":2,
-    		"lat":"123.0",
-    		"lng":"321.0",
-    		"location_description":"In the corner of 3rd floor",
-    		"location_picture":"alink",
-    		"requested_minutes":5,
-    		"start_time":"2015-02-07T11:16:34.323Z",
-    		"end_time":"2015-02-07T11:21:34.323Z",
-    		"status":"Finished Watch",
-    		"url":"http://0.0.0.0:3000/watches/1.json"}];
-		for (var watch in data){
+    	//var data = [{"user_id":666,"location_description":"In the corner of 3rd floor","requested_minutes":"5", "id": "12312"}];
+    	var aggregate = [];
+   		
+		for (var i = 0; i < data.length; i++) {
 			var a = Titanium.UI.createTableViewRow();
-			a.title = "User " + watch.user_id + " is looking for a watcher at " + watch.location_description + " for " + watch.requested_minutes; 
+			a.title = data[i].user_id + " is looking for a watcher  " + data[i].location_description +
+				 " requested time of wait is " + data[i].requested_minutes ;
+			a.id = data[i].id;
+			
+			a.addEventListener('click', function(e) {
+				applyFunc(a.id);
+			});
+			 
 			$.WatchList.add(a);
 		}
 	}
 });
 
-
-$.index.open();
-getActiveWatches.open("GET", "http://ip.jsontest.com/");
+getActiveWatches.open("GET", Titanium.API.URL + "/watches/unfulfilled");
 getActiveWatches.send();
 
 function ShowDialog(){
@@ -37,17 +36,23 @@ function StoreName(){
 function doClick (e) {
 	var view = Alloy.createController("WatchComplete", {}).getView();
 	Titanium.API.info(view);
+	getJSON.open("POST", Titanium.API.URL + "/watches.json?user_id="+Titanium.API.userId+
+													     "&user_name="+Titanium.API.user+
+													     "&lat="+0+
+													     "&lng="+0+
+													     "&location_description="+$.watch_description.value+
+													     "&requested_minutes="+$.requested_minutes.value+
+													     "&location_picture=link");
+	getJSON.send();
    	view.open();
 }
 
+
 $.index.addEventListener('open', function(){
 	console.log(Ti.API.user);
-	if (Ti.App.user !== null){
+	if (Titanium.API.user === ""){
 		var view = Alloy.createController("Login", {}).getView();
 		view.open();
-		getJSON.open("GET", "http://ip.jsontest.com/");
-		getJSON.send();
-		alert(Titanium.API.LastJsonQuery);
 	}
 });
 

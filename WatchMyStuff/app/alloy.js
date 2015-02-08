@@ -11,12 +11,21 @@
 // Alloy.Globals.someGlobalFunction = function(){};
 
 Titanium.API.LastJsonQuery = 0;
+Titanium.API.URL = "104.131.121.221";
+Titanium.API.user = "";
 
 var getJSON = Ti.Network.createHTTPClient({
     onload: function() {
     	Titanium.API.LastJsonQuery = JSON.parse(this.responseText);
 	}
 });
+
+function applyFunc(id) {
+	console.log(id);
+	transitionBasedOnStatus.open("GET", Titanium.API.URL + "/watches/" + id + ".json");
+	transitionBasedOnStatus.send();
+}
+
 
 var transitionBasedOnStatus = Ti.Network.createHTTPClient({
     onload: function() {
@@ -47,8 +56,9 @@ var transitionBasedOnStatus = Ti.Network.createHTTPClient({
 var logIn = Ti.Network.createHTTPClient({
 	onload: function () {
     	var data = JSON.parse(this.responseText);
+    	Titanium.API.user = data.name;
+    	Titanium.API.userId = data.id;
     	var view = Alloy.createController("index", {});
-    	Ti.API.user = 3;
     	view.open();
    },
     onerror: function () {

@@ -2,8 +2,9 @@
 	<TabGroup >
         <Tab title="Request">
             <Window title="Request the watch" backgroundColor="grey" layout="vertical">
-            	<Label left="0">Time Stamp</Label>
+            	<Label left="0">For how long?</Label>
             	<TextField
+            		id="requested_minutes"
         		 	width="Titanium.UI.FILL"
         		 	backgroundColor="white"
         		 	borderRadius="5"
@@ -11,6 +12,7 @@
     		 	</TextField>
             	<Label left="0">Describe your location</Label>
             	<TextArea
+            		 id="watch_description"
             		 height="60"
             		 width="Titanium.UI.FILL"
             		 borderRadius="5" 
@@ -32,7 +34,7 @@
         </Tab>
         <Tab title="History">
             <Window title="Watch History" backgroundColor="white">
-            	<TableView id="table">
+            	<TableView id="tableHist">
 		            <TableViewSection id="section" headerTitle="Current">
 		                <TableViewRow title="The watch"/>
 		                <TableViewRow title="Some other watch"/>
